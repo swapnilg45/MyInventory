@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+<h1>Edit Product</h1>
+<form method="post" action="{{ url_for('edit_product', id=form.product_id.data) }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.product_id.label(class="form-label") }}
+        {{ form.product_id(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.qty.label(class="form-label") }}
+        {{ form.qty(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

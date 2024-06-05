@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Product Balance Report{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Product Balance Report</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Warehouse</th>
+                <th scope="col">Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for balance in balances %}
+            <tr>
+                <td>{{ balance.product_name }}</td>
+                <td>{{ balance.location_name }}</td>
+                <td>{{ balance.quantity }}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

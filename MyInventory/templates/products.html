@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Products</h1>
+    <a href="{{ url_for('add_product') }}" class="btn btn-primary mb-3">Add New Product</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for products in product %}
+            <tr>
+                <td>{{ products.product_id }}</td>
+                <td>{{ products.name }}</td>
+                <td>{{ products.qty }}</td>
+                <td>
+                    <a href="{{ url_for('edit_product', id=products.product_id) }}" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

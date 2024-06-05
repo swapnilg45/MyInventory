@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+{% extends "base.html" %}
+
+{% block title %}Move Product{% endblock %}
+
+{% block content %}
+<body>
+  <div class="container mt-4">
+    <h2>Move Product</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.product_id.label(class="form-label") }}
+        {{ form.product_id(class="form-control") }}
+        {% for error in form.product_id.errors %}
+          <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.from_location.label(class="form-label") }}
+        {{ form.from_location(class="form-control") }}
+        {% for error in form.from_location.errors %}
+          <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.to_location.label(class="form-label") }}
+        {{ form.to_location(class="form-control") }}
+        {% for error in form.to_location.errors %}
+          <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.qty.label(class="form-label") }}
+        {{ form.qty(class="form-control") }}
+        {% for error in form.qty.errors %}
+          <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+      </div>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} mt-2">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
+{% endblock %}
